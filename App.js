@@ -1,12 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import Divider from './Divider';
+import UseEffect from './UseEffect/UseEffect';
 import UseState from './UseState';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <UseState />
-    </View>
+    <SafeAreaView>
+      <ScrollView>
+        <View style={styles.container}>
+          <UseState />
+          <Divider />
+          <UseEffect />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 

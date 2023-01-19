@@ -26,6 +26,7 @@ export default () => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.titleLabel}>[useState]</Text>
       {/* ============== (1) ============== */}
       <Text>현재 시각 : {time}시</Text>
       <Button
@@ -33,7 +34,7 @@ export default () => {
         onPress={didTapTimeUpdateButton}
       />
 
-      {/* ============== (2) ============== */}
+      {/* =====w========= (2) ============== */}
       <View style={styles.textInputContainer}>
         <TextInput
           placeholder="이름을 입력하세요..."
@@ -49,9 +50,9 @@ export default () => {
           />
         </View>
       </View>
-        {names.map((name, index) => (
-          <Text key={`${name}-${index}`}>{name}</Text>
-        ))}
+      {names.map((name, index) => (
+        <Text key={`${name}-${index}`}>{name}</Text>
+      ))}
     </View>
   )
 }
@@ -60,6 +61,12 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     alignItems: "center"
+  },
+  titleLabel: {
+    alignSelf: "baseline",
+    marginLeft: 16,
+    marginBottom: 16,
+    fontSize: 18
   },
   textInputContainer: {
     marginTop: 16,
