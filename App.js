@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Divider from './Divider';
 import UseEffect from './UseEffect/UseEffect';
+import UseRef from './UseRef';
 import UseState from './UseState';
 
 export default function App() {
@@ -12,6 +13,8 @@ export default function App() {
           <UseState />
           <Divider />
           <UseEffect />
+          <Divider />
+          <UseRef />
         </View>
       </ScrollView>
     </SafeAreaView>
