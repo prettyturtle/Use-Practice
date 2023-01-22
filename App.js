@@ -1,11 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
-import Divider from './Divider';
-import UseEffect from './UseEffect/UseEffect';
-import UseRef from './UseRef';
-import UseState from './UseState';
+import { StatusBar } from "expo-status-bar"
+import { useState } from "react"
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native"
+import Divider from "./Divider"
+import UseContext from "./UseContext/UseContext"
+import UseEffect from "./UseEffect/UseEffect"
+import UseRef from "./UseRef"
+import UseState from "./UseState"
+import { ThemeContext } from "./UseContext/ThemeContext"
+import { UserContext } from "./UseContext/UserContext"
 
 export default function App() {
+  const [isDark, setIsDark] = useState(false)
+  const [userName, setUserName] = useState("사용자")
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -15,17 +22,23 @@ export default function App() {
           <UseEffect />
           <Divider />
           <UseRef />
+          <Divider />
+          <UserContext.Provider value={{ userName, setUserName }}>
+            <ThemeContext.Provider value={{ isDark, setIsDark }}>
+              <UseContext />
+            </ThemeContext.Provider>
+          </UserContext.Provider>
         </View>
       </ScrollView>
     </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
-});
+})
