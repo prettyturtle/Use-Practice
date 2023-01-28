@@ -8,6 +8,7 @@ import UseRef from "./UseRef"
 import UseState from "./UseState"
 import { ThemeContext } from "./UseContext/ThemeContext"
 import { UserContext } from "./UseContext/UserContext"
+import UseMemo from "./UseMemo"
 
 export default function App() {
   const [isDark, setIsDark] = useState(false)
@@ -28,6 +29,8 @@ export default function App() {
               <UseContext />
             </ThemeContext.Provider>
           </UserContext.Provider>
+          <Divider />
+          <UseMemo />
         </View>
       </ScrollView>
     </SafeAreaView>
