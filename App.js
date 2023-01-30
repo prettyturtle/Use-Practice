@@ -9,6 +9,7 @@ import UseState from "./UseState"
 import { ThemeContext } from "./UseContext/ThemeContext"
 import { UserContext } from "./UseContext/UserContext"
 import UseMemo from "./UseMemo"
+import UseCallback from "./UseCallback"
 
 export default function App() {
   const [isDark, setIsDark] = useState(false)
@@ -31,6 +32,8 @@ export default function App() {
           </UserContext.Provider>
           <Divider />
           <UseMemo />
+          <Divider />
+          <UseCallback />
         </View>
       </ScrollView>
     </SafeAreaView>
