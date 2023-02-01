@@ -1,6 +1,28 @@
 import { useState, useReducer } from "react"
 import { StyleSheet, View, Text, Button, TextInput } from "react-native"
 
+// reducer  : state를 업데이트 하는 역할
+// dispatch : state 업데이트를 위한 요구
+// action   : 요구의 내용
+
+const ACTION_TYPES = {
+  deposit: "deposit",
+  withdraw: "withdraw",
+}
+
+const reducer = (state, action) => {
+  console.log("reducer가 호출됨", state, action)
+
+  switch (action.type) {
+    case ACTION_TYPES.deposit:
+      return state + action.payload
+    case ACTION_TYPES.withdraw:
+      return state - action.payload
+    default:
+      return state
+  }
+}
+
 const UseReducer = () => {
   const [number, setNumber] = useState(0)
   const [money, dispatch] = useReducer(reducer, 0)
@@ -18,7 +40,7 @@ const UseReducer = () => {
         [useReducer]
       </Text>
       <Text>useReducer은행에 오신 것을 환영합니다</Text>
-      <Text>잔고 : ? 원</Text>
+      <Text>잔고 : {money} 원</Text>
       <TextInput
         value={number.toString()}
         onChangeText={(t) => setNumber(Number(t))}
@@ -37,11 +59,21 @@ const UseReducer = () => {
       <View style={{ flexDirection: "row" }}>
         <Button
           title="예금"
-          onPress={() => {}}
+          onPress={() => {
+            dispatch({
+              type: ACTION_TYPES.deposit,
+              payload: number,
+            })
+          }}
         />
         <Button
           title="출금"
-          onPress={() => {}}
+          onPress={() => {
+            dispatch({
+              type: ACTION_TYPES.withdraw,
+              payload: number,
+            })
+          }}
         />
       </View>
     </View>
